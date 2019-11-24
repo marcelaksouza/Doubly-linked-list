@@ -1,0 +1,25 @@
+CREATE DATABASE db;
+USE db;
+
+DROP TABLE IF EXISTS people;
+CREATE TABLE people
+ (
+	id	 	INTEGER 	NOT NULL AUTO_INCREMENT,            
+	fname 	 	VARCHAR(50) 	NOT NULL,
+	lname 		VARCHAR(50) 	NOT NULL,
+	passport  	VARCHAR(50)  	NOT NULL,
+  	priority 	ENUM('LOW','MEDIUM','HIGH') 	NOT NULL,
+	arrivalDate 	DATE 		NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (id),
+CONSTRAINT unique_passport UNIQUE (passport)
+  );
+
+INSERT INTO people (fname, lname, passport, priority)
+VALUES 
+('Ana', 'Bazerque', '122jf' ,'LOW'),
+('Marcela','Souza', '132eg' , 'MEDIUM'),
+('Marcia', 'Oliveira', '872op' ,'HIGH'),
+('Rafaela','Souza', '135hu' , 'LOW');
+
+SELECT * FROM people;
+TRUNCATE TABLE  people;
